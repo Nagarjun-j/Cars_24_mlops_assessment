@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mnist-prediction-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mnist-prediction
+  template:
+    metadata:
+      labels:
+        app: mnist-prediction
+    spec:
+      containers:
+      - name: mnist-prediction-container
+        image: 88nagarjun/mnist-pred
+        ports:
+        - containerPort: 5000
